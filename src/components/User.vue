@@ -2,22 +2,35 @@
 import { ref, onMounted } from 'vue'
 
 // create users array
-const users = ref([
-  { firstName: 'Jessica', lastName: 'Anderson', age: 19, gender: 'Female' },
-  { firstName: 'Alice', lastName: 'Stones', age: 18, gender: 'Female' },
-])
+// const users = ref([
+//   { firstName: 'Jessica', lastName: 'Anderson', age: 19, gender: 'Female' },
+//   { firstName: 'Alice', lastName: 'Stones', age: 18, gender: 'Female' },
+// ])
+const users = ref([])
 
 // fetching data from an api
-onMounted(() => { async () => {
-  const response = await fetch('https://dummyjson.com/users?limit=10')
-  const data = await response.json()
-}
+onMounted(async () => {
+  try {
+    // getting data from api & turning it into json
+    const response = await fetch('https://dummyjson.com/users?limit=10')
+    const data = await response.json()
 
-}),
+    // mapping/transforming the array
+    users.value = data.map((user) => ({
+      id: user.id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      age: user.age,
+      gender: user.gender,
+    }))
+  } catch (err) {
+    console.error(err)
+  }
+})
 </script>
 
 <template>
-  <div class="user" v-for="user in users" :key="user.firstName">
+  <div class="user" v-for="user in users" :key="user.id">
     <h1>User 1</h1>
     <ul>
       <li>First name: {{ user.firstName }}</li>
