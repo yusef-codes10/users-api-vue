@@ -16,7 +16,7 @@ onMounted(async () => {
     const data = await response.json()
 
     // mapping/transforming the array
-    users.value = data.map((user) => ({
+    users.value = data.users.map((user) => ({
       id: user.id,
       firstName: user.firstName,
       lastName: user.lastName,
@@ -31,7 +31,7 @@ onMounted(async () => {
 
 <template>
   <div class="user" v-for="user in users" :key="user.id">
-    <h1>User 1</h1>
+    <h1>User {{ user.id }}</h1>
     <ul>
       <li>First name: {{ user.firstName }}</li>
       <li>Last name: {{ user.lastName }}</li>
