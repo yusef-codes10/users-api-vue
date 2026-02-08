@@ -5,10 +5,16 @@ const firstName = ref('Jessica')
 const lastName = ref('Anderson')
 const age = ref(19)
 const gender = ref('Female')
+
+// create users array
+const users = ref([
+  { firstName: 'Jessica', lastName: 'Anderson', age: 19, gender: 'Female' },
+  { firstName: 'Alice', lastName: 'Stones', age: 18, gender: 'Female' },
+])
 </script>
 
 <template>
-  <div class="user">
+  <div class="user" v-for="user in users">
     <h1>User 1</h1>
     <ul>
       <li>First name: {{ firstName }}</li>
