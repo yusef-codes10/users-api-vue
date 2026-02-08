@@ -8,13 +8,23 @@ const gender = ref('Female')
 </script>
 
 <template>
-  <h1>User 1</h1>
-  <ul>
-    <li>First name:</li>
-    <li>Last name:</li>
-    <li>age:</li>
-    <li>gender:</li>
-  </ul>
+  <div class="user">
+    <h1>User 1</h1>
+    <ul>
+      <li>First name: {{ firstName }}</li>
+      <li>Last name: {{ lastName }}</li>
+      <li>age: {{ age }}</li>
+      <li>gender: {{ gender }}</li>
+    </ul>
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.user {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #000;
+  padding: 1rem 2rem;
+  margin: 1rem 0;
+}
+</style>
