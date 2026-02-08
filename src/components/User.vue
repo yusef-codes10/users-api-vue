@@ -14,13 +14,13 @@ const users = ref([
 </script>
 
 <template>
-  <div class="user" v-for="user in users">
+  <div class="user" v-for="user in users" :key="user.firstName">
     <h1>User 1</h1>
     <ul>
-      <li>First name: {{ firstName }}</li>
-      <li>Last name: {{ lastName }}</li>
-      <li>age: {{ age }}</li>
-      <li>gender: {{ gender }}</li>
+      <li>First name: {{ user.firstName }}</li>
+      <li>Last name: {{ user.lastName }}</li>
+      <li>age: {{ user.age }}</li>
+      <li>gender: {{ user.gender }}</li>
     </ul>
   </div>
 </template>
