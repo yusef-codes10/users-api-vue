@@ -12,7 +12,7 @@ const users = ref([])
 onMounted(async () => {
   try {
     // getting data from api & turning it into json
-    const response = await fetch('https://dummyjson.com/users?limit=10')
+    const response = await fetch('https://dummyjson.com/users?limit=20')
     const data = await response.json()
 
     // mapping/transforming the array
@@ -27,6 +27,8 @@ onMounted(async () => {
     console.error(err)
   }
 })
+
+// trying to filter the famles only here
 </script>
 
 <template>
