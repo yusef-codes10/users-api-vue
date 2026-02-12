@@ -48,7 +48,7 @@ const filterdUsers = computed(() => {
 
   // handle the search input
   if (searchInput.value.trim() !== '') {
-    return
+    result = result.filter((user) => user.firstName.includes(searchInput))
   }
 
   return result
@@ -66,11 +66,11 @@ const showOBlood = () => {
 // adding the o- blood filter
 
 // adding the search functionality
-const searchInput = ref('hey there')
+const searchInput = ref('')
 
-const handleSearch = () => {
-  filterdUsers.value = users.value.filter((user) => user.firstName === 'Sophia')
-}
+// const handleSearch = () => {
+//   filterdUsers.value = users.value.filter((user) => user.firstName === 'Sophia')
+// }
 </script>
 
 <template>
@@ -79,7 +79,7 @@ const handleSearch = () => {
       <button @click="showFemalesOnly">Get Females only</button>
       <button @click="showOBlood">O-</button>
     </div>
-    <input type="search" name="" id="" v-model="searchInput" v-on:input="handleSearch" />
+    <input type="search" name="" id="" v-model="searchInput" />
   </div>
   <div class="user" v-for="user in filterdUsers" :key="user.id">
     <h1>User {{ user.id }}</h1>
