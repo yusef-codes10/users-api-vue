@@ -1,10 +1,10 @@
 <script setup>
-import User from './components/User.vue'
+import TheUser from './components/TheUser.vue'
 </script>
 
 <template>
   <h1>welcome to users</h1>
-  <User />
+  <TheUser />
 </template>
 
 <style scoped></style>

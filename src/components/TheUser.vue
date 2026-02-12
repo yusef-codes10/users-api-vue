@@ -22,6 +22,7 @@ onMounted(async () => {
       lastName: user.lastName,
       age: user.age,
       gender: user.gender,
+      bloodGroup: user.bloodGroup,
     }))
   } catch (err) {
     console.error(err)
@@ -29,11 +30,20 @@ onMounted(async () => {
 })
 
 // trying to filter the famles only here
+// Computed props are derived variables not functions, to create filters we fdo this:
+// 1️⃣ create the states
+const showFemales = ref(false)
+const showOMinusBlood = ref(false)
 
-const showFemales = ref(true)
-const filterFemales = computed(() => {
+const filterdUsers = computed(() => {
+  // let result = users.value
+
   if (showFemales.value) {
     return users.value.filter((user) => user.gender === 'female')
+  }
+
+  if (showOMinusBlood.value) {
+    return users.value.filter((user) => user.bloodGroup === 'O-')
   }
   return users.value
 })
@@ -42,17 +52,25 @@ const filterFemales = computed(() => {
 const showFemalesOnly = () => {
   showFemales.value = !showFemales.value
 }
+
+const showOBlood = () => {
+  showOMinusBlood.value = !showOMinusBlood.value
+}
+
+// adding the o- blood filter
 </script>
 
 <template>
   <button @click="showFemalesOnly">Get Females only</button>
-  <div class="user" v-for="user in filterFemales" :key="user.id">
+  <button @click="showOBlood">O-</button>
+  <div class="user" v-for="user in filterdUsers" :key="user.id">
     <h1>User {{ user.id }}</h1>
     <ul>
       <li>First name: {{ user.firstName }}</li>
       <li>Last name: {{ user.lastName }}</li>
       <li>age: {{ user.age }}</li>
       <li>gender: {{ user.gender }}</li>
+      <li>Blood Group: {{ user.bloodGroup }}</li>
     </ul>
   </div>
 </template>
