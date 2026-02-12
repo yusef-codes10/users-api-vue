@@ -29,13 +29,23 @@ onMounted(async () => {
 })
 
 // trying to filter the famles only here
+
+const showFemales = ref(true)
 const filterFemales = computed(() => {
-  return users.value.filter((user) => user.gender === 'female')
+  if (showFemales.value) {
+    return users.value.filter((user) => user.gender === 'female')
+  }
+  return users.value
 })
+
+// we need the show females only function
+const showFemalesOnly = () => {
+  showFemales.value = !showFemales.value
+}
 </script>
 
 <template>
-  <button @click="filterFemales">Get Females only</button>
+  <button @click="showFemalesOnly">Get Females only</button>
   <div class="user" v-for="user in users" :key="user.id">
     <h1>User {{ user.id }}</h1>
     <ul>
