@@ -36,16 +36,17 @@ const showFemales = ref(false)
 const showOMinusBlood = ref(false)
 
 const filterdUsers = computed(() => {
-  // let result = users.value
+  let result = users.value
 
   if (showFemales.value) {
-    return users.value.filter((user) => user.gender === 'female')
+    result = result.filter((user) => user.gender === 'female')
   }
 
   if (showOMinusBlood.value) {
-    return users.value.filter((user) => user.bloodGroup === 'O-')
+    result = result.filter((user) => user.bloodGroup === 'O-')
   }
-  return users.value
+
+  return result
 })
 
 // we need the show females only function
