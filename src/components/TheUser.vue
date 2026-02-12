@@ -46,6 +46,11 @@ const filterdUsers = computed(() => {
     result = result.filter((user) => user.bloodGroup === 'O-')
   }
 
+  // handle the search input
+  if (searchInput.value.trim() !== '') {
+    return
+  }
+
   return result
 })
 
