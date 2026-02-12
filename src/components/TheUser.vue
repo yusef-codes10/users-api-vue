@@ -59,11 +59,23 @@ const showOBlood = () => {
 }
 
 // adding the o- blood filter
+
+// adding the search functionality
+const searchInput = ref('hey there')
+
+const handleSearch = () => {
+  filterdUsers.value = users.value.filter((user) => user.firstName === 'Sophia')
+}
 </script>
 
 <template>
-  <button @click="showFemalesOnly">Get Females only</button>
-  <button @click="showOBlood">O-</button>
+  <div class="user-interactions">
+    <div class="btns">
+      <button @click="showFemalesOnly">Get Females only</button>
+      <button @click="showOBlood">O-</button>
+    </div>
+    <input type="search" name="" id="" v-model="searchInput" v-on:input="handleSearch" />
+  </div>
   <div class="user" v-for="user in filterdUsers" :key="user.id">
     <h1>User {{ user.id }}</h1>
     <ul>
@@ -83,5 +95,9 @@ const showOBlood = () => {
   border: 1px solid #000;
   padding: 1rem 2rem;
   margin: 1rem 0;
+}
+.user-interactions {
+  display: flex;
+  justify-content: space-between;
 }
 </style>
