@@ -48,7 +48,8 @@ const filterdUsers = computed(() => {
 
   // handle the search input
   if (searchInput.value.trim() !== '') {
-    result = result.filter((user) => user.firstName.includes(searchInput))
+    const toSearch = searchInput.value.toLowerCase()
+    result = result.filter((user) => user.firstName.toLowerCase().includes(toSearch))
   }
 
   return result
