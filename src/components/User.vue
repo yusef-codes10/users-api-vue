@@ -46,7 +46,7 @@ const showFemalesOnly = () => {
 
 <template>
   <button @click="showFemalesOnly">Get Females only</button>
-  <div class="user" v-for="user in users" :key="user.id">
+  <div class="user" v-for="user in filterFemales" :key="user.id">
     <h1>User {{ user.id }}</h1>
     <ul>
       <li>First name: {{ user.firstName }}</li>
